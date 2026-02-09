@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <Title>To My Love</Title>
+
+    <style>
+        body {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            background-color: #FFA3CD; display: flex; justify-content: center; 
+            align-items: center; height: 100vh;
+            margin: 0; overflow: hidden;
+        }
+        .card {
+            background-color: #D6246A; border-radius: 30px; padding: 30px;
+            width: 400px; text-align: center; box-shadow: 20px 30px 40px rgba(92, 8, 37, 0.6);
+        }
+        h2{
+            color:#FFFFFF; margin-bottom:15px
+        }
+        .card img{
+          width: 100%; max-height: 220px; object-fit: contain;
+          border-radius: 20px; margin: 15px 0;
+        }
+        .btn{
+            background-color:#FFBFD8; color:#AB0043; padding:12px 24px;
+            border:none; border-radius:6px; cursor:pointer; margin-top:15px;
+        }
+        .btn:hover {background-color:#FFD4E4;}#answer{
+            font-size: 40px; margin-top: 15px
+        }
+        #fact {
+            margin-top:15px; color:#AB16A7;
+        }
+        .button-group{
+            display: flex; flex-direction: row; align-items: center;
+            justify-content: center;
+            gap: 30px; margin-top: 20px; text-align: center;
+            position: relative;
+        }
+        #yesBtn{
+            transform-origin: center;
+        }
+        #noBtn{
+            position: relative;
+            z-index: 1;
+            transition: transform 0.1s ease;
+        }
+        .container{
+            display: flex; align-items: center;
+            gap: 40px;
+        }
+        .left-image, .right-image{
+            width: 200px; height: auto;
+            border-radius: 20px; animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%   { transform: translateY(0); }
+            50%  { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        .float-wrapper {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .float-wrapper.delay {
+            animation-delay: 1.5s;
+        }
+
+        /* image sizes stay here */
+        .left-image {
+        width: 200px;
+        }
+        .right-image{
+            width: 260px; animation-delay: 1.5s;
+        }
+    </style>
+    </head>
+    <body>
+        <div class="container">
+            <!--LEFT IMAGE-->
+            <div class="float-wrapper">
+                <img class="left-image" src="justinbeiberflower.png" alt="Justin Beiber Flower">
+            </div>
+            <!--CARD-->
+            <div class="card" id="card">
+                <h2 id="message">Will You Be My Valentine? ❤️</h2>
+                <img class="responsive-gif" src="woodstock.gif">
+
+                <div class="button-group">
+                    <button class="btn" id="yesBtn" onclick="window.location.href='valindex.html'">Yes</button>
+                    <button class="btn" id="noBtn">No</button>
+                </div>
+            </div>
+        <!--RIGHT IMAGE-->
+            <div class="float-wrapper delay">
+                <img class="right-image" src="cupid-goofy.png" alt="Cupid Goofy">
+            </div>
+        </div>
+        <script>
+            const noBtn = document.getElementById("noBtn");
+
+            const noTexts = [
+                "Are you sure?",
+                "Are you really sure?",
+                "Are you really REALLY sure?",
+                "Really?",
+                "Cmon now",
+                "Think again 😭",
+                "Think MORE",
+                "Pleaseeee 💔",
+                "Pookie no!!!",
+                "Sid Please!!",
+                "Don’t break my heart 💘",
+                "Last chance 😳",
+                "Okay now you’re just being mean 😤",
+                "YOU'RE BEING REALLY MEAN",
+                "Stopppppppppppp"
+            ];
+
+            let noClickCount = 0;
+            let yesScale = 1;
+            let slideDistance = 0;
+
+            noBtn.addEventListener("click", () => {
+                // Change No button text
+                noBtn.textContent = noTexts[noClickCount % noTexts.length];
+                noClickCount++;
+
+                // Grow Yes button
+                yesScale += 0.40;
+                yesBtn.style.transform = `scale(${yesScale})`;
+
+                //Slide No button sideways only
+                slideDistance += 40;
+                noBtn.style.transform = `translateX(${slideDistance}px)`;
+            });
+ 
+        </script>
+    </body>
+</html>

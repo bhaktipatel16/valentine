@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <style>
+            body {
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                background-color: #FFA3CD; display: flex;
+                justify-content: center; align-items: center; height: 100vh;
+                margin: 0; overflow: hidden;
+            }
+            .message{
+                background-color: #ba214c; color: #FFFFFF; padding: 40px;
+                border-radius: 30px; text-align: center;
+                box-shadow: 2px 8px 16px rgba(133, 3, 51, 0.2);
+                width: 420px; z-index: 2; position: relative;
+            }
+            h1{
+                font-size: 48px; margin-bottom: 10px;
+            }
+            p{
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+            .image-space{
+                width: 100%; border-radius: 20px; display: flex; justify-content: center;
+                align-items: center; overflow: hidden; margin-top: 20px;
+            }
+            .image-space img{
+                max-width: 100%;
+                max-height: 100%; object-fit: contain;
+            }
+            .heart{
+                position: fixed; top: -10px; font-size: 20px; animation: fall linear forwards;
+                pointer-events: none; z-index: 1;
+            }
+            @keyframes fall{
+                to{
+                    transform: translateY(110vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="message">
+            <h1>YAY 💖</h1>
+            <p>I LOVE YOU!!! 🥰</p>
+            <div class="image-space">
+                <img src="snoopy.gif" alt="Snoopy">
+            </div>
+        </div>
+        <script>
+            function createHeart(){
+                const heart = document.createElement("div");
+                heart.classList.add("heart");
+                heart.innerHTML = "💖";
+
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+                heart.style.fontSize = Math.random() * 15 + 15 + "px";
+
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 6000);
+            }
+
+            setInterval(createHeart, 300);
+        </script>
+    </body>
+</html>
+
+
